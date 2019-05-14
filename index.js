@@ -7,15 +7,16 @@ const app = express()
 
 const apiKey = process.env.MY_OPENWEATHER_API_KEY;
 
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs')
+// app.use(express.static('public'));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.set('view engine', 'ejs')
 
-app.get('/', function (req, res) {
-  res.render('index', {weather: null, error: null});
-})
+// app.get('/', function (req, res) {
+  // res.render('index', {weather: null, error: null});
+// })
 
-app.post('/', function (req, res) {
+//app.post('/', function (req, res) {
+module.exports = (req, res) {
   let city = req.body.city;
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
 
@@ -33,3 +34,4 @@ app.post('/', function (req, res) {
     }
   });
 })
+
